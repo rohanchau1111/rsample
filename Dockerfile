@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 #RUN npm install -g npm@9.6.7
 RUN npm start
-RUN npm install -g npm@9.6.7 --save react react-dom react-scripts
+RUN npm install
 #RUN npm install -g svgo
 # RUN apt install unzip 
 # RUN unzip final-build.zip
