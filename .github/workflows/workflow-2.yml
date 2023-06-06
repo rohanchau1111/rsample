@@ -28,12 +28,12 @@ jobs:
               - name: Checkout code
                 uses: actions/checkout@v3            
               
-              # - name: Cache node modules
-              #   id: cache-npm
-              #   uses: actions/cache@v3
-              #   with: 
-              #    path: ~/.npm
-              #    key: cachemodule-${{ hashFiles('**/package.-lock.json') }}  
+              - name: Cache node modules
+                id: cache-npm
+                uses: actions/cache@v3
+                with: 
+                 path: ~/.npm
+                 key: cachemodule-${{ hashFiles('**/package.-lock.json') }}  
           
                
               - name: Setup Node.js
@@ -74,13 +74,13 @@ jobs:
                uses: actions/checkout@v3            
               
 
-          # --------- Cache Module ----------
-            #  - name: Cache node modules
-            #    id: cache-npm
-            #    uses: actions/cache@v3
-            #    with: 
-            #         path: ~/.npm
-            #         key: cachemodule-${{ hashFiles('**/package.-lock.json') }}
+         #--------- Cache Module ----------
+             - name: Cache node modules
+               id: cache-npm
+               uses: actions/cache@v3
+               with: 
+                    path: ~/.npm
+                    key: cachemodule-${{ hashFiles('**/package.-lock.json') }}
          
 
           # -------- Setup NPM --------------
