@@ -5,7 +5,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install -g npm@9.6.7
 #RUN npm install -g svgo
-COPY /home/runner/work/rsample/rsample/package.json .
 # RUN apt install unzip 
 # RUN unzip final-build.zip
 RUN npm run build 
