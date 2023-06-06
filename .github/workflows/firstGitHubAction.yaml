@@ -1,0 +1,13 @@
+name: GitHub Actions Demo
+on: [ workflow_dispatch]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First job running"
+      - name: Running shell command
+        run: |
+          echo "welcome"
+          touch abc
+          sudo apt install curl -y
+          ls -l 

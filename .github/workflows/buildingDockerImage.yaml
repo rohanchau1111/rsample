@@ -1,0 +1,30 @@
+name: Building DockerImage
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+    # - name: Build the Docker image
+    #   run: docker build -t mydockerimage  -f  Dockerfile . 
+
+      - name: Login into Dockerhub1
+        env:
+         DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
+         DOCKER_PASS: ${{secrets.DOCKERHUB_TOKEN }}
+        run: | 
+           docker login -u $DOCKER_USER -p $DOCKER_PASS 
+     
+      # - name: Download Artifact
+      #   uses: action/download-artifact@v2
+      #   with:
+      #      name: final-build
+      #      path: artifacts/
+      #      run: echo "----Downloaded succesfully-----"
+      - name: Build the Docker image
+        run: docker build -t ${{secrets.DOCKERHUB_USERNAME}}/sampledocker:latest  -f  Dockerfile . 
+       # working-directory: artifacts
+
+      - name: Push the Docker Image
+        run: docker push ${{secrets.DOCKERHUB_USERNAME}}/sampledocker:latest
