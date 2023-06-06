@@ -22,18 +22,18 @@ jobs:
         run: echo "True"
 
  my_second_job:
-          #  needs: my_fourth_job
+            needs: my_fourth_job
             runs-on: ubuntu-latest
             steps:
               - name: Checkout code
                 uses: actions/checkout@v3            
               
-              # - name: Cache node modules
-              #   id: cache-npm
-              #   uses: actions/cache@v3
-              #   with: 
-              #    path: ~/.npm
-              #    key: cachemodule-${{ hashFiles('**/package.-lock.json') }}  
+              - name: Cache node modules
+                id: cache-npm
+                uses: actions/cache@v3
+                with: 
+                 path: ~/.npm
+                 key: cachemodule-${{ hashFiles('**/package.-lock.json') }}  
           
                
               - name: Setup Node.js
@@ -66,59 +66,55 @@ jobs:
             steps: 
             - name: Job 3
               run: echo "Third job Execution ."
-#  my_fourth_job: 
-#             needs: firstJob
-#             runs-on: ubuntu-latest
-#             steps: 
-#              - name: Checkout code
-#                uses: actions/checkout@v3            
+ my_fourth_job: 
+            needs: firstJob
+            runs-on: ubuntu-latest
+            steps: 
+             - name: Checkout code
+               uses: actions/checkout@v3            
               
 
-          ## --------- Cache Module ----------
-            #  - name: Cache node modules
-            #    id: cache-npm
-            #    uses: actions/cache@v3
-            #    with: 
-            #         path: ~/.npm
-            #         key: cachemodule-${{ hashFiles('**/package.-lock.json') }}
+          # --------- Cache Module ----------
+             - name: Cache node modules
+               id: cache-npm
+               uses: actions/cache@v3
+               with: 
+                    path: ~/.npm
+                    key: cachemodule-${{ hashFiles('**/package.-lock.json') }}
          
 
-          ## -------- Setup NPM --------------
-            #  - uses: actions/setup-node@v3
-            #    with:
-            #        node-version: 14
-            #        cache: 'npm'
+          # -------- Setup NPM --------------
+             - uses: actions/setup-node@v3
+               with:
+                   node-version: 14
+                   cache: 'npm'
              
-            #  - run: npm install      
-            #  - run: npm run build
+             - run: npm install      
+             - run: npm run build
+ 
+             - name: Setup Node.js
+               uses: actions/setup-node@v2
+               with: 
+                       node-version: 14
+             - name: Install Dependencies
+               run: npm install 
 
-         
-             
-              #- name: Setup Node.js
-           #     uses: actions/setup-node@v2
-            #  with: 
-            #            node-version: 14
-            #  - name: Install Dependencies
-            #    run: npm install 
-
-            # #  - name: Install React
-            # #    run: npm i react-scripts
+            #  - name: Install React
+            #    run: npm i react-scripts
                   
-            #  - name: Build the app
-            #    run: npm run build
-       
-    
-           #  - run: echo "Build Successful"
+             - name: Build the app
+               run: npm run build
+             - run: echo "Build Successful"
 
-          ## ------- Downloading the Artifacts ---------
-#  myjob-5: 
-#           name: Downloading build artifact
-#           needs: my_second_job
-#           runs-on:  ubuntu-latest 
-#           steps: 
-#              - name: Download Artifact
-#                uses: actions/download-artifact@v3
-#                with:
-#                  name: final-build
-#              - name: Test the artifact
-#                run: ls -R 
+          # ------- Downloading the Artifacts ---------
+ myjob-5: 
+          name: Downloading build artifact
+          needs: my_second_job
+          runs-on:  ubuntu-latest 
+          steps: 
+             - name: Download Artifact
+               uses: actions/download-artifact@v3
+               with:
+                 name: final-build
+             - name: Test the artifact
+               run: ls -R 
