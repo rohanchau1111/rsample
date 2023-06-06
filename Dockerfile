@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY artifacts/final-build.tar.gz .
 RUN tar -xzf final-build.tar.gz
-RUN npm run build
+RUN npm run build 
 
 
 #Stage 2
