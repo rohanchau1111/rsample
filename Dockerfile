@@ -1,9 +1,9 @@
 #Stage 1
 
-FROM node:14-alpine as builder
+FROM node:latest as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci 
+RUN npm install
 #RUN npm install -g svgo
 COPY artifacts/final-build.tar.gz .
 RUN tar -xzf final-build.tar.gz
