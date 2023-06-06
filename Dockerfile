@@ -3,7 +3,8 @@
 FROM node:14-alpine as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install -g svgo
+RUN npm ci 
+#RUN npm install -g svgo
 COPY artifacts/final-build.tar.gz .
 RUN tar -xzf final-build.tar.gz
 RUN npm run build 

@@ -119,6 +119,8 @@ jobs:
              - name: Test the artifact
                run: ls -R 
  DockerbuildJob:
+                name: Building the Dockerfile
+                needs: myjob-5
                 runs-on: ubuntu-latest
                 steps:
                   - uses: actions/checkout@v3
