@@ -3,7 +3,7 @@
 FROM node:latest as builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN `npm install -g npm@9.6.7`
 #RUN npm install -g svgo
 COPY artifacts/final-build.tar.gz .
 RUN tar -xzf final-build.tar.gz
