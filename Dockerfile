@@ -9,7 +9,6 @@ COPY artifacts/final-build.tar.gz .
 RUN tar -xzf final-build.tar.gz
 RUN npm run build 
 
-
 #Stage 2
 FROM nginx:stable-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
