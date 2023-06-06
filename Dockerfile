@@ -4,7 +4,7 @@ FROM node:latest as builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install -g npm@9.6.7
-RUN npm install react-scripts@latest
+RUN npm start
 #RUN npm install -g svgo
 # RUN apt install unzip 
 # RUN unzip final-build.zip
