@@ -41,7 +41,7 @@ jobs:
                 with: 
                       node-version: 14
               - name: Install Dependencies
-                run: npm install --legacy-peer-deps
+                run: npm install -g npm@9.6.7
 
               # - name: Installing react
               #   run: npm i react-scripts
