@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 #RUN npm install -g npm@9.6.7
 RUN npm i react-scripts
-RUN npm install
+RUN npm install --legacy-peer-deps
 RUN yarn start
 #RUN npm install -g svgo
 # RUN apt install unzip 
