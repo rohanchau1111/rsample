@@ -41,7 +41,7 @@ jobs:
                 with: 
                       node-version: 14
               - name: Install Dependencies
-                run: npm install 
+                run: npm install --legacy-peer-deps
 
               # - name: Installing react
               #   run: npm i react-scripts
@@ -89,21 +89,14 @@ jobs:
                    node-version: 14
                    cache: 'npm'
              
-             - run: npm install      
+             - run: npm install --legacy-peer-deps   
              - run: npm run build
- 
-             - name: Setup Node.js
-               uses: actions/setup-node@v2
-               with: 
-                       node-version: 14
-             - name: Install Dependencies
-               run: npm install 
+  
 
             #  - name: Install React
             #    run: npm i react-scripts
                   
-             - name: Build the app
-               run: npm run build
+            
              - run: echo "Build Successful"
              - name: Login into Dockerhub1
                env:
