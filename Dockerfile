@@ -15,6 +15,6 @@
 #Stage 2
 FROM nginx:stable-alpine
 WORKDIR /app
-COPY package*.json /usr/share/nginx/html
+COPY package*.json /usr/share/nginx/html/
 EXPOSE 8080
 ENTRYPOINT [ "nginx","-g","daemon off;"]
