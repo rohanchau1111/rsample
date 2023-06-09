@@ -112,17 +112,17 @@ jobs:
                run: docker push ${{secrets.DOCKERHUB_USERNAME}}/rsample:latest
 
           # ------- Downloading the Artifacts ---------
- myjob-5: 
-          name: Downloading build artifact
-          #needs: my_second_job
-          runs-on:  ubuntu-latest 
-          steps: 
-             - name: Download Artifact
-               uses: actions/download-artifact@v3
-               with:
-                 name: final-build
-             - name: Test the artifact
-               run: ls -R 
+#  myjob-5: 
+#           name: Downloading build artifact
+#           #needs: my_second_job
+#           runs-on:  ubuntu-latest 
+#           steps: 
+#              - name: Download Artifact
+#                uses: actions/download-artifact@v3
+#                with:
+#                  name: final-build
+#              - name: Test the artifact
+#                run: ls -R 
 #  DockerbuildJob:
 #                 name: Building the Dockerfile
 #                 needs: myjob-5
