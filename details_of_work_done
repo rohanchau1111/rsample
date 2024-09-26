@@ -7,3 +7,9 @@ Generated Jacoco report for gateway api job
 Added Jacoco plugin in identity service but due to no test class report is not generated.
 Added post mail after build success and failure.
  
+
+Jenkins 
+identity service - > build.gradle
+Gateway API ->   build.gradle
+
+
